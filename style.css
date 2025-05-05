@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background-color: blueviolet;
+}
+
+.container form
+{
+    background-color: white;
+    display: flex;
+    height: 60px;
+    justify-content: space-around;
+    border: 2px solid black;
+    border-radius: 50px;
+    background-color: rgb(0,0,0);
+}
+
+.container form #username
+{
+    margin-top: 1%;
+    border-radius: 50px;
+    text-align: center;
+    height: 40px;
+    width: 50%;
+}
+
+.container form #submitbtn
+{
+    margin-top: 1%;
+    height: 40px;
+    width: 20%;
+    border-radius: 50px;
+}
+
+li{
+    list-style: none;
+}
+
+.profile
+{
+    height: 70vh;
+    width: 700px;
+    border: 2px solid black;
+    margin-top: 7%;
+    margin-left: 28%;
+    background-color: rgba(0, 0, 0, 0.763);
+    border-radius: 10px;
+}
+
+.part1
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    margin-top: 2%;
+}
+
+.part1 img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin-top: 2%;
+}
+
+.part2
+{
+    display: flex;
+    margin-top: 20px;
+    gap: 25px;
+    color: white;
+    font-size: 25px;
+}
+
+.part2 .name
+{
+    margin-left: 5%;
+}
+
+.part3
+{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 10px;
+    margin-left: 5%;
+    color: white;
+    font-size: 25px;
+}
+
+.part3 table tr
+{
+    gap: 10px;
+}

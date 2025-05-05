@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="profile">
+        <div class="container">
+            <form>
+                <input id="username" type="text" placeholder="Enter UserName">
+                <div id="listalldata"></div>
+                <input id="submitbtn" type="submit" value="GetData">
+            </form>
+            <div class="part1">
+                <img id="img" src="" alt="">
+                <h2>followers</h2>
+                <h1 id="followers"></h1>
+                <h2>following</h2>
+                <h1 id="following"></h1>
+            </div>
+            <div class="part2">
+                <div class="name"></div>
+            </div>
+            <div class="part3">
+                <table>
+                    <tr>
+                        <td><span>CreatedAt : </span></td>
+                        <td>
+                            <div id="date"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span>public_gists : </span></td>
+                        <td>
+                            <div id="gits"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span>public_repos : </span></td>
+                        <td>
+                            <div id="repo"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span>Last_Update : </span></td>
+                        <td>
+                            <div id="update"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
