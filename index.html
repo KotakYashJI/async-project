@@ -2,58 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GitHub Profile Viewer</title>
   <link rel="stylesheet" href="style.css" />
-  <title>User Profile</title>
 </head>
 <body>
-  <div class="profile">
-    <div class="container">
-      <form class="form">
-        <input id="username" type="text" placeholder="Enter Username" />
-        <input id="submitbtn" type="submit" value="Get Data" />
-        <div id="listalldata"></div>
-      </form>
+  <div class="container">
+    <form id="search-form">
+      <input type="text" id="username" placeholder="Enter GitHub Username" />
+      <button type="submit" id="submitbtn">Get</button>
+    </form>
 
-      <div class="user-info">
-        <div class="avatar-section">
-          <img id="img" src="" alt="User Image" />
-        </div>
+    <div id="profile-card" class="hidden">
+      <img id="avatar" class="avatar" src="" alt="Avatar" />
+      <h2 id="name" class="user-name"></h2>
 
-        <div class="stats">
-          <div>
-            <h3>Followers</h3>
-            <p id="followers">0</p>
-          </div>
-          <div>
-            <h3>Following</h3>
-            <p id="following">0</p>
-          </div>
-        </div>
-
-        <div class="name"></div>
-
-        <table class="user-table">
-          <tr>
-            <td>Created At:</td>
-            <td id="date"></td>
-          </tr>
-          <tr>
-            <td>Public Gists:</td>
-            <td id="gits"></td>
-          </tr>
-          <tr>
-            <td>Public Repos:</td>
-            <td id="repo"></td>
-          </tr>
-          <tr>
-            <td>Last Update:</td>
-            <td id="update"></td>
-          </tr>
-        </table>
+      <div class="stats">
+        <div><strong>Followers:</strong> <span id="followers"></span></div>
+        <div><strong>Following:</strong> <span id="following"></span></div>
       </div>
+
+      <table class="info-table">
+        <tr><td>Created At</td><td id="date"></td></tr>
+        <tr><td>Public Gists</td><td id="gits"></td></tr>
+        <tr><td>Public Repos</td><td id="repo"></td></tr>
+        <tr><td>Last Updated</td><td id="update"></td></tr>
+      </table>
     </div>
+
+    <p id="error-message" class="error-message hidden"></p>
   </div>
+
   <script src="index.js"></script>
 </body>
 </html>

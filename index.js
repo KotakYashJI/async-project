@@ -1,49 +1,53 @@
-let submitbtn = document.querySelector("#submitbtn");
-let username = document.querySelector("#username");
-let listdata = document.querySelector("#listalldata");
-let image = document.querySelector("#img");
-let follwers = document.querySelector("#followers");
-let following = document.querySelector('#following');
-let name = document.querySelector(".name");
-let date = document.querySelector("#date");
-let gits = document.querySelector("#gits");
-let repo = document.querySelector("#repo");
-let update  = document.querySelector("#update")
-let profilehead = document.querySelector(".container form");
+const form = document.getElementById("search-form");
+const usernameInput = document.getElementById("username");
 
-function backgroundchanger()
-{
-    let num1  = Math.random()*256;
-    let num2  = Math.random()*256;
-    let num3  = Math.random()*256;
-    let num4  = Math.random()*256;
-    let num5  = Math.random()*256;
-    let num6  = Math.random()*256;
-    
-    profilehead.style.backgroundColor = `rgb(${num1},${num2},${num3})`
-}
+const profileCard = document.getElementById("profile-card");
+const avatarImg = document.getElementById("avatar");
+const nameEl = document.getElementById("name");
+const followersEl = document.getElementById("followers");
+const followingEl = document.getElementById("following");
+const dateEl = document.getElementById("date");
+const gitsEl = document.getElementById("gits");
+const repoEl = document.getElementById("repo");
+const updateEl = document.getElementById("update");
+const errorEl = document.getElementById("error-message");
 
-setInterval(backgroundchanger,3000);
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const username = usernameInput.value.trim();
 
-submitbtn.addEventListener('click',(e)=>{
-    e.preventDefault();
-    let ans = fetchdata();
-    ans.then((res)=>{
-        image.src = res.avatar_url;
-        follwers.innerHTML = res.followers;
-        following.innerHTML = res.following;
-        name.innerHTML = res.name?res.name:res.login;  
-        date.innerHTML = res.created_at;
-        gits.innerHTML = res.public_gists;
-        repo.innerHTML = res.public_repos;
-        update.innerHTML = res.updated_at;
-        console.log(res);       
-    })
+  if (!username) {
+    showError("Please enter a GitHub username.");
+    return;
+  }
+
+  try {
+    const res = await fetch(`https://api.github.com/users/${username}`);
+    if (!res.ok) throw new Error("User not found");
+
+    const data = await res.json();
+    updateUI(data);
+  } catch (err) {
+    showError("User not found or error occurred.");
+  }
 });
 
-function fetchdata()
-{
-   username.value = username.value.trim();
-   return fetch(`https://api.github.com/users/${username.value}`).then((res)=>res.json()).catch((err)=>console.log(err)
-   )
+function updateUI(data) {
+  errorEl.classList.add("hidden");
+  profileCard.classList.remove("hidden");
+
+  avatarImg.src = data.avatar_url;
+  nameEl.textContent = data.name || data.login;
+  followersEl.textContent = data.followers;
+  followingEl.textContent = data.following;
+  dateEl.textContent = new Date(data.created_at).toLocaleDateString();
+  gitsEl.textContent = data.public_gists;
+  repoEl.textContent = data.public_repos;
+  updateEl.textContent = new Date(data.updated_at).toLocaleDateString();
+}
+
+function showError(message) {
+  profileCard.classList.add("hidden");
+  errorEl.textContent = message;
+  errorEl.classList.remove("hidden");
 }
